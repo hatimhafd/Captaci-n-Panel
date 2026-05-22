@@ -423,7 +423,7 @@ async function marcarContactado(){
     const notas=document.getElementById('m-notas').value;
     await apiSvc('leads?id=eq.'+currentLead.id,{
       method:'PATCH',
-      headers:{'Prefer':'return=minimal'},
+      
       body:JSON.stringify({contactado_en:new Date().toISOString(),notas,estado:'CONTACTADO'})
     });
     await apiSvc('lead_acciones',{
@@ -445,7 +445,7 @@ async function marcarCaptado(){
     const comDEM=comFR*(pct/100)*100;
     await apiSvc('leads?id=eq.'+currentLead.id,{
       method:'PATCH',
-      headers:{'Prefer':'return=minimal'},
+      
       body:JSON.stringify({captado:true,captado_en:new Date().toISOString(),precio_captacion:precio,comision_dem:comDEM,estado:'CAPTADO'})
     });
     await apiSvc('lead_acciones',{
